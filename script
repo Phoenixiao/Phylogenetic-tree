@@ -3,14 +3,14 @@
 date
 echo Processing...
 
-# input fasta format file
+# Input fasta format file
 fasta=$1
 
 # Align with FFT-NS-i method
 mafft="/home/qqxiao/tools/mafft-linux64/mafft.bat"
 #${mafft} --retree 2 --maxiterate 1000 --inputorder ${fasta} > ${fasta:0:-3}_FFTNSi.fa ###
 
-# trimal gap
+# Trimming gap
 trimal="/home/qqxiao/tools/trimal-trimAl/source/trimal"
 #${trimal} -gt 0.5 -clustal -in ${fasta:0:-3}_FFTNSi.fa -out ${fasta:0:-3}_FFTNSi_trimal0.5_clus.fa
 

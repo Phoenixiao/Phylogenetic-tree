@@ -1,6 +1,7 @@
 #!/bin/bash
 
 date
+pwd
 echo Processing...
 
 # Input fasta format file

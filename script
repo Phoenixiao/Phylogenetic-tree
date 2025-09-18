@@ -8,11 +8,11 @@ fasta=$1
 
 # Align with FFT-NS-i method
 mafft="/home/qqxiao/tools/mafft-linux64/mafft.bat"
-#${mafft} --retree 2 --maxiterate 1000 --inputorder ${fasta} > ${fasta:0:-3}_FFTNSi.fa ###
+${mafft} --retree 2 --maxiterate 1000 --inputorder ${fasta} > ${fasta:0:-3}_FFTNSi.fa
 
 # Trimming gap
 trimal="/home/qqxiao/tools/trimal-trimAl/source/trimal"
-#${trimal} -gt 0.5 -clustal -in ${fasta:0:-3}_FFTNSi.fa -out ${fasta:0:-3}_FFTNSi_trimal0.5_clus.fa
+${trimal} -gt 0.5 -clustal -in ${fasta:0:-3}_FFTNSi.fa -out ${fasta:0:-3}_FFTNSi_trimal0.5_clus.fa
 
 # Build phylogenetic tree
 iqtree3 -s ${fasta:0:-3}_FFTNSi_trimal0.5_clus.fa --prefix ${fasta:0:-3}_PhyTree -T AUTO --threads-max 8 -redo -m MFP --alrt 1000 -B 1000 --bnni

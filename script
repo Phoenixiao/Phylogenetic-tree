@@ -1,0 +1,24 @@
+#!/bin/bash
+
+date
+echo Processing...
+
+# Align with FFT-NS-i method
+mafft="/home/qqxiao/tools/mafft-linux64/mafft.bat"
+#${mafft} --retree 2 --maxiterate 1000 --inputorder Cas9-IscB-825.fa > Cas9-IscB-825_FFTNSi.fa ### out.fasta
+
+# trimal gap
+trimal="/home/qqxiao/tools/trimal-trimAl/source/trimal"
+
+#${trimal} -fasta -strictplus -in /home/qqxiao/tree/Cas9_IscB_FFTNSi_t2-2.fa -out /home/qqxiao/tree/Cas9_IscB_FFTNSi_t2-2-trimal-3.fa
+
+${trimal} -fasta -in /home/qqxiao/tree/tr2/Cas9-IscB-825_FFTNSi.fa -out /home/qqxiao/tree/tr2/Cas9-IscB-825_FFTNSi_trimal_fa0.5.fa -gt 0.5
+${trimal} -clustal -in /home/qqxiao/tree/tr2/Cas9-IscB-825_FFTNSi.fa -out /home/qqxiao/tree/tr2/Cas9-IscB-825_FFTNSi_trimal_clus0.5.fa -gt 0.5
+
+# Build tree
+#iqtree2 -s Cas9-IscB-825_FFTNSi_trimal_clus0.5.fa --prefix Cas-IscB82505 -T AUTO --threads-max 4 -redo -m MFP --alrt 1000 -B 1000 --bnni
+
+#iqtree3 -s Cas9-IscB-825_FFTNSi_trimal_fa0.5.fa --prefix Cas-IscB82505 -T AUTO --threads-max 16 -redo -m MFP --alrt 1000 -B 1000 --bnni
+
+echo Finished!, bye~ Qingquan Xiao
+date
